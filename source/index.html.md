@@ -15,6 +15,7 @@ includes:
   - tx
   - contracts
   - events
+  - examples
 
 search: true
 ---
@@ -67,6 +68,9 @@ In these docs you'll find everything you need to start working with Ethereum wit
 - [Blockchain API:](#blockchain-api) Endpoints to query general information about the Ethereum blockchain and its blocks.
 - [Address API:](#address-api) Query information about addresses, and generate addresses.
 - [Transaction API:](#transaction-api) Information about transactions, how to generate/send your own.
+- [Contract API:](#contract-api) How to query contract and execute code on Ethereum.
+- [Examples:](#examples) Various examples about Ethereum.
+
 
 ### Changelog and Errors
 

@@ -1,7 +1,5 @@
 # Blockchain API
 
-Blockchain docs here.
-
 The first component---and highest level---of the BlockCypher Ethereum API allows you to query general information about Ethereum's blockchain and blocks.
 
 If you're new to blockchains, you can think of the blockchain itself as an immutable, distributed ledger. Each block in the blockchain is like a "page" in the ledger containing information about transactions between parties. A great place to start understanding the mechanics behind blockchains is the [original Bitcoin whitepaper.](http://bitcoin.org/bitcoin.pdf) To get a handle on how Ethereum differs from Bitcoin, you can check the [Ethereum project whitepaper.](https://github.com/ethereum/wiki/wiki/White-Paper)

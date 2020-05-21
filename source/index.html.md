@@ -43,10 +43,6 @@ Welcome to [BlockCypher's](http://www.blockcypher.com/) Ethereum API documentati
 
 In a nutshell, Bitcoin is about decentralized, trust-minimizing, sound money. Ethereum is about decentralized, trust-minimizing, sound computation. Much more detail about these differences can be read at the [Ethereum Wiki here.](https://github.com/ethereum/wiki/wiki/Design-Rationale) You can find more information at the [project's webpage as well.](https://ethereum.org/)
 
-<aside class="warning">
-As with our other coin/chain nodes, we rebuilt an Ethereum node from the ground up to support much higher scale and throughput, but it's a lot newer than our other implementations. THIS IS VERY MUCH A BETA. Things may break/it might not be suitable for production applications. 
-</aside>
-
 <aside class="notice">
 We don't have the full suite of API endpoints compared to Bitcoin, but we are always adding more as our implementation matures. Check these docs for the latest features.
 </aside>

@@ -1,4 +1,4 @@
-# Contract API 
+# Contract API
 
 Compared to other blockchains, contracts lie at the heart of Ethereum's unique value proposition. Contracts can be expressively programmed in languages like [Solidity](https://solidity.readthedocs.io/en/latest/); if you're not familiar with Ethereum's contract language you should definitely start there.
 
@@ -83,7 +83,7 @@ curl -sd @testGreeter.json https://api.blockcypher.com/v1/eth/main/contracts?tok
   }
 ]
 
-# Now publish the greeter contract 
+# Now publish the greeter contract
 cat publishGreeter.json
 {
   "solidity": "contract mortal {\n  /* Define variable owner of the type address*/\n    address owner;\n    /* this function is executed at initialization and sets the owner of the contract */\n    function mortal() { owner = msg.sender; }\n    /* Function to recover the funds on the contract */\n    function kill() { if (msg.sender == owner) suicide(owner); }\n}\n\ncontract greeter is mortal {\n    /* define variable greeting of the type string */\n    string greeting;\n    /* this runs when the contract is executed */\n    function greeter(string _greeting) public {\n        greeting = _greeting;\n    }\n    /* main function */\n    function greet() constant returns (string) {\n        return greeting;\n    }\n}",
@@ -238,7 +238,7 @@ Resource | Method | Return Object
 -------- | ------ | -------------
 /contract/$ADDRESS | GET | [Contract](#contract)
 
-ADDRESS is a *string* representing the contract address you're interested in querying, for example: 
+ADDRESS is a *string* representing the contract address you're interested in querying, for example:
 
 `0eb688e79698d645df015cf2e9db5a6fe16357f1`
 
@@ -250,8 +250,8 @@ The returned object contains information about the contract; if you deployed the
 # call the greet method, using your own private key and gas amount to fund
 cat call.json
 {
-	"private": "3ca40...",
-	"gas_limit": 20000 
+  "private": "3ca40...",
+  "gas_limit": 20000
 }
 curl -d @call.json -s https://api.blockcypher.com/v1/eth/main/contracts/0eb688e79698d645df015cf2e9db5a6fe16357f1/greet?token=YOURTOKEN
 {
@@ -269,8 +269,8 @@ curl -d @call.json -s https://api.blockcypher.com/v1/eth/main/contracts/0eb688e7
 # whoops! let's try upping the gas
 cat call.json
 {
-	"private": "3ca40...",
-	"gas_limit": 100000 
+  "private": "3ca40...",
+  "gas_limit": 100000
 }
 curl -d @call.json -s https://api.blockcypher.com/v1/eth/main/contracts/0eb688e79698d645df015cf2e9db5a6fe16357f1/kill?token=YOURTOKEN
 {
@@ -290,7 +290,7 @@ Resource | Method | Request Object | Return Object
 -------- | ------ | -------------- | -------------
 /contracts/$ADDRESS/$METHOD | POST | [Contract](#contract) | [Contract](#contract)
 
-ADDRESS is a *string* representing the contract address you're interested in querying, for example: 
+ADDRESS is a *string* representing the contract address you're interested in querying, for example:
 
 `0eb688e79698d645df015cf2e9db5a6fe16357f1`
 

@@ -15,6 +15,7 @@ includes:
   - tx
   - contracts
   - events
+  - payfwd
   - examples
 
 search: true
@@ -67,8 +68,9 @@ In these docs you'll find everything you need to start working with Ethereum wit
 - [Address API:](#address-api) Query information about addresses, and generate addresses.
 - [Transaction API:](#transaction-api) Information about transactions, how to generate/send your own.
 - [Contract API:](#contract-api) How to query contract and execute code on Ethereum.
+- [Events and Hooks:](#events-and-hooks) Reliable notifications system for a wide variety of events on blockchains, available through WebHooks or WebSockets.
+- [Payment Forwarding:](#payment-forwarding) Create one-time addresses that will automatically forward to an address of your choosing.
 - [Examples:](#examples) Various examples about Ethereum.
-
 
 ### Changelog and Errors
 

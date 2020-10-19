@@ -8,7 +8,7 @@ Please note: WebSockets are not supported on Ethereum at the moment.
 
 ## Types of Events
 
-We support a number of different event types, and you can filter your notification requests depending on how you structure your [Event](#event) request object. 
+We support a number of different event types, and you can filter your notification requests depending on how you structure your [Event](#event) request object.
 
 Event | Description
 ----- | -----------

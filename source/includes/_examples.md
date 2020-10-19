@@ -8,7 +8,7 @@ ERC-20 is the Ethereum token standard which is used for Ethereum smart contracts
 
 The ERC-20 Token Standard is defined in [EIP 20](https://eips.ethereum.org/EIPS/eip-20).
 
-In this category, we will take the example of Tether (USDT), an ERC-20 token, to show you how you can use BlockCypher's API to easily interact with the Ethereum Blockchain. 
+In this category, we will take the example of Tether (USDT), an ERC-20 token, to show you how you can use BlockCypher's API to easily interact with the Ethereum Blockchain.
 
 This contract is deployed at `dac17f958d2ee523a2206206994597c13d831ec7`.
 
@@ -50,9 +50,8 @@ curl -d '{"private": "$PRIVATE","gas_limit": 20000}' https://api.blockcypher.com
 
 ### Getting Balance
 
-Now, what if we want to query the balance of an account? 
-It's very easy to do with BlockCypher API. Simply query the `contract` endpoint with the `balanceOf` function and provide in the parameters the address that you want to fetch. In this example, we query the Tether balance of the Ethereum address `3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be`. 
-
+Now, what if we want to query the balance of an account?
+It's very easy to do with BlockCypher API. Simply query the `contract` endpoint with the `balanceOf` function and provide in the parameters the address that you want to fetch. In this example, we query the Tether balance of the Ethereum address `3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be`.
 
 ```shell
 curl -d '{ "private": "$PRIVATE", "gas_limit": 20000, "params": ["3f5ce5fbfe3e9af3971dd833d26ba9b5c936f0be"] }' https://api.blockcypher.com/v1/eth/main/contracts/dac17f958d2ee523a2206206994597c13d831ec7/balanceOf?token=$TOKEN
@@ -70,7 +69,7 @@ curl -d '{ "private": "$PRIVATE", "gas_limit": 20000, "params": ["3f5ce5fbfe3e9a
 
 ### Transferring ERC-20 Token
 
-Transferring and ERC-20 Token is also very easy with BlockCypher API. 
+Transferring and ERC-20 Token is also very easy with BlockCypher API.
 When we look at the contract, we can see the `transfer` function. Be careful that the public key associated with the private key provided in the call MUST contains both Ethereum (to pay for Gas) and the ERC-20 token you want to send.
 
 In this example, you can see that we want to send 1 USDT (1000000) from X (associated with the private key you cannot see here) to dac17f958d2ee523a2206206994597c13d831ec7.
@@ -78,7 +77,7 @@ Notice that the `gas_limit` is set at 200,000.
 
 And success! We get a `call_tx_hash`, which we can use to see the transaction using the `Transaction` endpoint:
 [42b26937543905e4633c90dbd222bf04ff67e74d63f8e6f6f1a56879f19e1bc0](http://api.blockcypher.com/v1/eth/main/txs/42b26937543905e4633c90dbd222bf04ff67e74d63f8e6f6f1a56879f19e1bc0)
- 
+
 ```shell
 curl -d '{ "private": $PRIVATE, "gas_limit": 200000, "params": [ "285e456950190f531cdf06c33bbd74F370727254", 1000000]}' http://api.blockcypher.com/v1/eth/main/contracts/dac17f958d2ee523a2206206994597c13d831ec7/transfer?token=$TOKEN
 {
@@ -93,7 +92,6 @@ curl -d '{ "private": $PRIVATE, "gas_limit": 200000, "params": [ "285e456950190f
 ```
 
 <aside class="warning">
-Be careful with the quantity of Gas you provide. 
+Be careful with the quantity of Gas you provide.
 If your gas limit is too low your transaction will not go through (<a href=http://api.blockcypher.com/v1/eth/main/txs/53190ea38fd55c2b1e12a734b8ca0cf58ab9434123fd81decae05063ace49c0d>this transaction for example</a>).
 </aside>
-

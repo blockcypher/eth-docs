@@ -84,7 +84,7 @@ curl -s https://api.blockcypher.com/v1/eth/main/addrs/738d145faabb1e00cf5a017588
       "confirmed": "2016-06-02T05:02:50Z",
       "double_spend": false
     },
-		...
+    ...
   ],
   "hasMore": true,
   "tx_url": "https://api.blockcypher.com/v1/eth/main/txs/"

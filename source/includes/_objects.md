@@ -4,13 +4,12 @@
 # All cURL'd Objects are JSON:
 
 {
-	key: value,
-	key: value,
+  key: value,
+  key: value,
 }
 ```
 
 Before diving into BlockCypher's endpoints, this section details all the Objects exposed and expected by the API. Some of you might be more interested in the endpoints themselves, in which case, feel free to [skip to the next section.](#blockchain-api) For each Object there's a description and a link to a germane API endpoint.
-
 
 <aside class="notice">
 Objects sometimes contain <b>attributes</b> that are <b><i>optional.</i></b> These are always noted in the <b>description</b>. In these cases, the Object may not be guaranteed to include that <b>attribute</b> in its response.
@@ -50,6 +49,7 @@ Attribute | Type | Description
 **previous_hash** | *string* | The hash of the second-to-latest confirmed block in the blockchain.
 **previous_url** | *url* | The BlockCypher URL to query for more information on the second-to-latest confirmed block; returns a [Block](#block).
 **unconfirmed_count** | *integer* | Number of unconfirmed transactions in memory pool (likely to be included in next block).
+**peer_count** | *integer* | *N/A, will be deprecated soon*.
 **high_gas_price** | *integer* | A rolling average of the gas price (in wei) for transactions to be confirmed within 1 to 2 blocks.
 **medium_gas_price** | *integer* | A rolling average of the gas price (in wei) for transactions to be confirmed within 3 to 6 blocks.
 **low_gas_price** | *integer* | A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks.
@@ -80,7 +80,7 @@ curl -s https://api.blockcypher.com/v1/eth/main/blocks/7
     "4b8729311c5b59f418c5154fd54d85e6a8b42eabf83a1d3c05c754a8f10354cc"
   ],
   "txids": [],
-	"internal_txids": [],
+  "internal_txids": [],
   "depth": 1656646,
   "prev_block_url": "https://api.blockcypher.com/v1/eth/main/blocks/1f1aed8e3694a067496c248e61879cda99b0709a1dfbacd0b693750df06b326e",
   "tx_url": "https://api.blockcypher.com/v1/eth/main/txs/"
@@ -88,7 +88,6 @@ curl -s https://api.blockcypher.com/v1/eth/main/blocks/7
 ```
 
 A Block represents the current state of a particular block from a [Blockchain](#blockchain). Typically returned from the [Block Hash](#block-hash-endpoint) and [Block Height](#block-height-endpoint) endpoints.
-
 
 Attribute | Type | Description
 --------- | ---- | -----------
@@ -98,8 +97,8 @@ Attribute | Type | Description
 **chain** | *string* | The name of the blockchain represented, in the form of $COIN.$CHAIN
 **total** | *integer* | The total number of wei transacted in this block.
 **fees** | *integer* | The total number of fees---in wei---collected by miners in this block.
-**size** | *integer* | Raw size of block (including header and all transactions) in bytes. 
-**ver** | *integer* | Block version. 
+**size** | *integer* | Raw size of block (including header and all transactions) in bytes.
+**ver** | *integer* | Block version.
 **time** | [*time*](https://tools.ietf.org/html/rfc3339) | Recorded time at which block was built.
 **received_time** | [*time*](https://tools.ietf.org/html/rfc3339) | The time BlockCypher's servers receive the block.
 **coinbase_addr** | *string* | The Ethereum address of the miner that received the coinbase and fee reward.
@@ -168,7 +167,7 @@ A TX represents the current state of a particular transaction from either a [Blo
 Attribute | Type | Description
 --------- | ---- | -----------
 **block_height** | *integer* | Height of the block that contains this transaction. If this is an unconfirmed transaction, it will equal -1.
-**hash** | *string* | The hash of the transaction. 
+**hash** | *string* | The hash of the transaction.
 **addresses** | *array[string]* | Array of Ethereum addresses involved in the transaction.
 **total** | *integer* | The total number of wei exchanged in this transaction.
 **fees** | *integer* | The total number of fees---in wei---collected by miners in this transaction. Equal to **gas_price** * **gas_used**.
@@ -199,15 +198,15 @@ Attribute | Type | Description
 
 ```shell
 {
-	"tx_hash": "ba44f568dc77d33893261c041994eeaef17d108a1845ccb9e376afea2acdd0e9",
-	"block_height": 1648312,
-	"tx_input_n": 0,
-	"tx_output_n": -1,
-	"value": 50420000000000000,
-	"ref_balance": 2845236193385545395,
-	"confirmations": 8342,
-	"confirmed": "2016-06-05T12:47:08Z",
-	"double_spend": false
+  "tx_hash": "ba44f568dc77d33893261c041994eeaef17d108a1845ccb9e376afea2acdd0e9",
+  "block_height": 1648312,
+  "tx_input_n": 0,
+  "tx_output_n": -1,
+  "value": 50420000000000000,
+  "ref_balance": 2845236193385545395,
+  "confirmations": 8342,
+  "confirmed": "2016-06-05T12:47:08Z",
+  "double_spend": false
 }
 ```
 
@@ -216,9 +215,9 @@ A TXRef object represents summarized data about a transaction input or output. T
 Attribute | Type | Description
 --------- | ---- | -----------
 **block_height** | *integer* | Height of the block that contains this transaction input/output. If it's unconfirmed, this will equal -1.
-**tx_hash** | *string* | The hash of the transaction containing this input/output. 
+**tx_hash** | *string* | The hash of the transaction containing this input/output.
 **tx_input_n** | *integer* | Index of this input in the enclosing transaction. 0 if it's an input, -1 if it's an output.
-**tx_output_n** | *integer* |	Index of this output in the enclosing transaction. -1 if it's an input, 0 if it's an output.
+**tx_output_n** | *integer* | Index of this output in the enclosing transaction. -1 if it's an input, 0 if it's an output.
 **value** | *integer* | The value transfered by this input/output in wei exchanged in the enclosing transaction.
 **double_spend** | *bool* | *true* if this is an attempted double spend; *false* otherwise.
 **confirmations** | *integer* | Number of subsequent blocks, including the block the transaction is in. Unconfirmed transactions have 0 confirmations.
@@ -268,8 +267,8 @@ curl -sd '{"inputs":[{"addresses": ["1cc60c94254c0f0f0b957fb7c3dfed2d00e49a4c"]}
   "tosign": [
     "dd3c2cc1cf735ce5a3bbb5de7fb8f3ac2d9b6e6ec211ec6d8c03f098403e7736"
   ],
-	"signatures": [],
-	"errors": []
+  "signatures": [],
+  "errors": []
 }
 ```
 
@@ -330,7 +329,7 @@ curl -s https://api.blockcypher.com/v1/eth/main/addrs/738d145faabb1e00cf5a017588
       "confirmed": "2016-06-02T05:02:50Z",
       "double_spend": false
     },
-		...
+    ...
   ],
   "hasMore": true,
   "tx_url": "https://api.blockcypher.com/v1/eth/main/txs/"
@@ -344,9 +343,9 @@ Attribute | Type | Description
 **address** | *string* | The requested address.
 **total_received** | *integer* |Total amount of confirmed wei received by this address.
 **total_sent** | *integer* | Total amount of confirmed wei sent by this address.
-**balance**	| *integer* | Balance of confirmed wei on this address. (i.e., for transactions whose confirmations > 0).
-**unconfirmed_balance**	| *integer* | Balance of unconfirmed wei on this address. Can be negative (if unconfirmed transactions are just spending part of an address balance). Only unconfirmed transactions (haven't made it into a block) are included in this calculation.
-**final_balance**	| *integer* |	Total balance of wei, including confirmed and unconfirmed transactions, for this address.
+**balance** | *integer* | Balance of confirmed wei on this address. (i.e., for transactions whose confirmations > 0).
+**unconfirmed_balance** | *integer* | Balance of unconfirmed wei on this address. Can be negative (if unconfirmed transactions are just spending part of an address balance). Only unconfirmed transactions (haven't made it into a block) are included in this calculation.
+**final_balance** | *integer* | Total balance of wei, including confirmed and unconfirmed transactions, for this address.
 **n_tx** | *integer* | Number of confirmed transactions on this address. Only transactions that have made it into a block (confirmations > 0) are counted.
 **unconfirmed_n_tx** | *integer* | Number of unconfirmed transactions for this address. Only unconfirmed transactions (confirmations == 0) are counted.
 **final_n_tx** | *integer* | Final number of transactions, including confirmed and unconfirmed transactions, for this address.
@@ -360,9 +359,9 @@ Attribute | Type | Description
 ```shell
 curl -sX POST https://api.blockcypher.com/v1/eth/main/addrs
 {
-	"private": "32605f9fbe224ebe621f88c33ae27099d4ce803e3b1cb5a1a3169790fd71beee",
-	"public": "04d3e1b49ef16dcde23be535b621d15c83ff75ef097ae43f2ef7a98bcddbb402034ddb6a5ca781d7333ef988bb9a5cd98c1f407d8acf77a1a8a17a26899fa66be5",
-	"address": "d543125acfc1e4d22f7f62aa5fbb2bb9a42bdb6d"
+  "private": "32605f9fbe224ebe621f88c33ae27099d4ce803e3b1cb5a1a3169790fd71beee",
+  "public": "04d3e1b49ef16dcde23be535b621d15c83ff75ef097ae43f2ef7a98bcddbb402034ddb6a5ca781d7333ef988bb9a5cd98c1f407d8acf77a1a8a17a26899fa66be5",
+  "address": "d543125acfc1e4d22f7f62aa5fbb2bb9a42bdb6d"
 }
 ```
 
@@ -370,9 +369,9 @@ An AddressKeychain represents an associated collection of public and private key
 
 Attribute | Type | Description
 --------- | ---- | -----------
-**address**	| *string* | Standard address representation.
+**address** | *string* | Standard address representation.
 **public** | *string* | Hex-encoded Public key.
-**private**	| *string* | Hex-encoded Private key.
+**private** | *string* | Hex-encoded Private key.
 
 ## Contract
 
@@ -394,7 +393,7 @@ Attribute | Type | Description
 "creation_tx_hash": "61474003e56d67aba6bf148c5ec361e3a3c1ceea37fe3ace7d87759b399292f9",
 "address": "0eb688e79698d645df015cf2e9db5a6fe16357f1",
 "params": [
-	"Hello BlockCypher Test"
+  "Hello BlockCypher Test"
 ]
 }
 ```
@@ -438,8 +437,55 @@ Attribute | Type | Description
 --------- | ---- | -----------
 **id** | *string* | Identifier of the event; generated when a new request is created.
 **event** | *string* | Type of event; can be *unconfirmed-tx*, *new-block*, *confirmed-tx*, *tx-confirmation*, *double-spend-tx*.
-**hash**	| *string* | ***optional*** Only objects with a matching hash will be sent. The hash can either be for a block or a transaction.
-**address**	| *string* | ***optional*** Only transactions associated with the given address will be sent. 
+**hash** | *string* | ***optional*** Only objects with a matching hash will be sent. The hash can either be for a block or a transaction.
+**address** | *string* | ***optional*** Only transactions associated with the given address will be sent. 
 **confirmations** | *integer* | ***optional***  Used in concert with the *tx-confirmation* event type to set the number of confirmations desired for which to receive an update. You'll receive an updated [TX](#tx) for every confirmation up to this amount. The maximum allowed is 10; if not set, it will default to 6.
 **url** | *url* | ***optional*** Callback URL for this Event's WebHook; not applicable for WebSockets usage.
 **callback_errors** | *int* | Number of errors when attempting to POST to callback URL; not applicable for WebSockets usage.
+
+## PaymentForward
+
+```shell
+curl -d '{"destination":"0xda4b58eff2f3fd6c9845f82268cac1115b9b446b","callback_url": "https://my.domain.com/callbacks/new-pay", "gas_price_gwei": 50,"token":"YOURTOKEN"}' https://api.blockcypher.com/v1/eth/main/payments
+
+{
+  "id": "82f0af68-da11-477f-8b42-79edbf3e6481",
+  "token": "YOURTOKEN",
+  "destination": "da4b58eff2f3fd6c9845f82268cac1115b9b446b",
+  "input_address": "718d2ab6160cf79cab1815dcc87d6b76fc20a0ba",
+  "callback_url": "https://my.domain.com/callbacks/new-pay"
+}
+```
+
+A PaymentForward object represents a request set up through the [Payment Forwarding](#payment-forwarding) service.
+
+Attribute | Type | Description
+--------- | ---- | -----------
+**id** | *string* | Identifier of the payment forwarding request; generated when a new request is created.
+**token** | *string* | The mandatory user token.
+**destination** | *string* | The required destination address for payment forwarding.
+**input_address** | *string* | The address which will automatically forward to **destination**; generated when a new request is created.
+**callback_url** | *url* | ***Optional*** The URL to call anytime a new payment is forwarded.
+**enable_confirmations** | *bool* | ***Optional*** Whether to also call the **callback_url** with subsequent confirmations of the forwarding transactions. Automatically sets up a WebHook.
+**gas_price_gwei** | *int* | ***Optional*** Gas price for the forwarding transaction, in gwei. If not set, defaults to 80 gwei.
+**txs** | *array[string]* | ***Optional*** History of forwarding transaction hashes for this payment forward; not present if this request has yet to forward any transactions.
+
+## PaymentForwardCallback
+
+```shell
+{
+  "value": 935404733882568,
+  "input_address": "c46d6b42d7df500d6fe83fb5e86969b51e775bad",
+  "destination": "2139b240756b7522702b742ec01271b0e2d6e245",
+  "transaction_hash": "db08bc6ae92405f8346ae80def1c436dff9ca47e4ae718b46ac68e93da41395d"
+}
+```
+
+A PaymentForwardCallback object represents the payload delivered to the optional **callback_url** in a [PaymentForward](#payment-forward) request.
+
+Attribute | Type | Description
+--------- | ---- | -----------
+**value** | *int* | Amount sent to the destination address, in wei.
+**input_address** | *string* | The intermediate address to which the payment was originally sent.
+**destination** | *string* | The final destination address to which the payment will eventually be sent.
+**transaction_hash** | *string* | The transaction hash of the generated transaction that forwards the payment from the **input_address** to the **destination.**

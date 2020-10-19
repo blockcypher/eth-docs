@@ -4,13 +4,14 @@ This repository contains all of [BlockCypher's](http://www.blockcypher.com) Ethe
 
 ## Getting Started with BlockCypher's Ethereum API Docs
 
-### Prerequisites
+To get started with Slate, please check out the [Getting Started](https://github.com/slatedocs/slate/wiki#getting-started)
+section in our [wiki](https://github.com/slatedocs/slate/wiki).
 
 You're going to need:
 
- - **Linux or macOS** — Windows may work, but is unsupported.
- - **Ruby, version 2.3.1 or newer**
- - **Bundler** — If Ruby is already installed, but the `bundle` command doesn't work, just run `gem install bundler` in a terminal.
+* **Linux or macOS** — Windows may work, but is unsupported.
+* **Ruby, version 2.3.1 or newer**
+* **Bundler** — If Ruby is already installed, but the `bundle` command doesn't work, just run `gem install bundler` in a terminal.
 
 ### Getting Set Up
 

@@ -18,6 +18,8 @@ includes:
   - examples
 
 search: true
+
+code_clipboard: true
 ---
 
 # Introduction

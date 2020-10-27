@@ -212,11 +212,13 @@ The **params** property lets you provide arguments to the contract constructor. 
 
 You can optionally include **value** in wei to transfer to the contract on creation.
 
-Note that for now both the contract solidity source and the ABI are made publicly available for anyone with the contract hash. We will support making the source private to your token in the future. However note that all contracts on the public Ethereum blockchain can be seen in binary form and it's only a matter of time before good decompilers surface.
-
 Resource | Method | Request Object | Return Object
 -------- | ------ | -------------- | -------------
 /contracts | POST | [Contract](#contract) | Array[[Contract](#contract)]
+
+<aside class="warning">
+Please be sure that your contract creation transaction ran successfully before doing any call on it. Errors such as <code>"execution_error": "contract creation code storage out of gas"</code> happen regularly when your <code>gas_limit</code> is too low. For example, to deploy an ERC-20 token, you'll need to set a <code>gas_limit</code> around 3500000.
+</aside>
 
 ## Get Contract Address Endpoint
 

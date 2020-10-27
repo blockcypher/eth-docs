@@ -2752,8 +2752,6 @@ curl <span class="nt">-s</span> https://api.blockcypher.com/v1/eth/main/txs/6147
 
 <p>You can optionally include <strong>value</strong> in wei to transfer to the contract on creation.</p>
 
-<p>Note that for now both the contract solidity source and the ABI are made publicly available for anyone with the contract hash. We will support making the source private to your token in the future. However note that all contracts on the public Ethereum blockchain can be seen in binary form and it&#39;s only a matter of time before good decompilers surface.</p>
-
 <table><thead>
 <tr>
 <th>Resource</th>
@@ -2769,6 +2767,10 @@ curl <span class="nt">-s</span> https://api.blockcypher.com/v1/eth/main/txs/6147
 <td>Array[<a href="#contract">Contract</a>]</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+Please be sure that your contract creation transaction ran successfully before doing any call on it. Errors such as <code>"execution_error": "contract creation code storage out of gas"</code> happen regularly when your <code>gas_limit</code> is too low. For example, to deploy an ERC-20 token, you'll need to set a <code>gas_limit</code> around 3500000.
+</aside>
 <h2 id='get-contract-address-endpoint'>Get Contract Address Endpoint</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>
 <span class="c"># and/or, check the contract address. if it was created by blockcypher, we'll return the code and ABI as well.</span>
 curl <span class="nt">-s</span> https://api.blockcypher.com/v1/eth/main/contracts/0eb688e79698d645df015cf2e9db5a6fe16357f1?token<span class="o">=</span>YOURTOKEN

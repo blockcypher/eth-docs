@@ -78,7 +78,7 @@ Our documentation is powered by [GitHub Pages](https://pages.github.com/) and [S
 
 ## API Versions
 
-All API calls are versioned, and the current BlockCypher API is v1. **The BlockCypher Ethereum API is currently in beta**, and we hope not to introduce any breaking changes, but until it's out of beta we can't make that guarantee until it's stable.
+All API calls are versioned, and the current BlockCypher API is v1. We will never introduce any breaking changes within v1, but we may add new, non-breaking features from time to time.
 
 ## RESTful Resources
 

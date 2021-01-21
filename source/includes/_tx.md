@@ -459,14 +459,15 @@ curl -sd 'curl -sd '{"gas_price": 150000000000, "inputs":[ "sequence": 1 ,{"addr
 }
 ```
 
-It's possible to "cancel" or "replace" a stuck transaction with Ethereum. This is particularly useful in times when gas prices are fluctuating, you may want to increase the gas price of your transaction, to make sure it will be confirmed quickly.
-To "cancel" a transaction, create a transaction with the same nonce as the one stuck in the mempool. 
+It is possible to "cancel" or "replace" a stuck transaction with Ethereum. This is particularly useful in times when gas prices are fluctuating a lot: you may want to increase the gas price of your transaction, to make sure it will be confirmed quickly.
+
+**To "cancel" or "replace" a transaction, create a transaction with the same nonce as the one stuck in the mempool.**
 
 - Cancel: Send a transaction with a value of 0 ETH to your own Ethereum address, with the same nonce as the one stuck in the mempool. This will prevent your previous transaction from being confirmed.
 - Replace: Send the same transaction to another Ethereum address, with a higher gas price. This will prevent your previous transaction from being confirmed.
 
 **Be sure to use the same nonce. To do so, you have to add the `sequences` params with the `txs/new` endpoint.**
 
-<aside class="notice">
+<aside class="warning">
 It is still possible for the initial transaction to be confirmed. In that case you replacement or cancellation transaction will be invalidated.
 </aside>

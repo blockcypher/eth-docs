@@ -408,3 +408,66 @@ $TXHEX is a hex-encoded raw representation of your transaction, for example:
 `f86b808504e3b2920082520894add42af7dd58b27e1e6ca5c4fdc01214b52d382f870bdccd84e7b000801ba0b86360f1c2d2b38421a80e71bf4cf54371bc9aa62f81c925484c6557b44b13f1a07b5690150c10a3947225fb612162c90ccfaefde99f7d363a8013e3eead0e55dd`
 
 If it succeeds, you'll receive a decoded [TX](#tx) object and an HTTP Status Code 201. You can then use the **hash** to track its progress on the network.
+
+
+
+## Transaction Cancellation and Replacement
+
+```shell
+curl -sd 'curl -sd '{"gas_price": 150000000000, "inputs":[ "sequence": 1 ,{"addresses": ["add42af7dd58b27e1e6ca5c4fdc01214b52d382f"]}],"outputs":[{"addresses": ["884bae20ee442a1d53a1d44b1067af42f896e541"], "value": 4200000000000000}]}' https://api.blockcypher.com/v1/eth/main/txs/new?token=YOURTOKEN
+
+{
+  "tx": {
+    "block_height": -1,
+    "block_index": 0,
+    "hash": "9403244c6bcfe4063e7fb33138b02881d7a72ccdbd9c04d9abdff2b432d67ada",
+    "addresses": [
+      "add42af7dd58b27e1e6ca5c4fdc01214b52d382f",
+      "884bae20ee442a1d53a1d44b1067af42f896e541"
+    ],
+    "total": 7350000000000000,
+    "fees": 3150000000000000,
+    "size": 37,
+    "gas_limit": 21000,
+    "gas_price": 150000000000,
+    "relayed_by": "",
+    "received": "2016-06-08T01:32:35.573921633Z",
+    "ver": 0,
+    "double_spend": false,
+    "vin_sz": 1,
+    "vout_sz": 1,
+    "inputs": [
+      {
+        "sequence": 1,
+        "addresses": [
+          "add42af7dd58b27e1e6ca5c4fdc01214b52d382f"
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "value": 4200000000000000,
+        "addresses": [
+          "884bae20ee442a1d53a1d44b1067af42f896e541"
+        ]
+      }
+    ]
+  },
+  "tosign": [
+    "a83f5bea598e0d217a03a2646d6c49edb2e99daf4537b2c09b008df76b77acec"
+  ]
+}
+```
+
+It is possible to "cancel" or "replace" a stuck transaction with Ethereum. This is particularly useful in times when gas prices are fluctuating a lot: you may want to increase the gas price of your transaction, to make sure it will be confirmed quickly.
+
+**To "cancel" or "replace" a transaction, create a transaction with the same nonce as the one stuck in the mempool.**
+
+- Cancel: Send a transaction with a value of 0 ETH to your own Ethereum address, with the same nonce as the one stuck in the mempool. This will prevent your previous transaction from being confirmed.
+- Replace: Send the same transaction to another Ethereum address, with a higher gas price. This will prevent your previous transaction from being confirmed.
+
+**Be sure to use the same nonce. To do so, you have to add the `sequences` params with the `txs/new` endpoint.**
+
+<aside class="warning">
+It is still possible for the initial transaction to be confirmed. In that case you replacement or cancellation transaction will be invalidated.
+</aside>

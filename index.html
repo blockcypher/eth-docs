@@ -414,6 +414,9 @@
                   <li>
                     <a href="#push-raw-transaction-endpoint" class="toc-h2 toc-link" data-title="Push Raw Transaction Endpoint">Push Raw Transaction Endpoint</a>
                   </li>
+                  <li>
+                    <a href="#transaction-cancellation-and-replacement" class="toc-h2 toc-link" data-title="Transaction Cancellation and Replacement">Transaction Cancellation and Replacement</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -2544,6 +2547,64 @@ curl <span class="nt">-sd</span> <span class="s1">'{"tx": {...}, "tosign": [ "a8
 <p><code>f86b808504e3b2920082520894add42af7dd58b27e1e6ca5c4fdc01214b52d382f870bdccd84e7b000801ba0b86360f1c2d2b38421a80e71bf4cf54371bc9aa62f81c925484c6557b44b13f1a07b5690150c10a3947225fb612162c90ccfaefde99f7d363a8013e3eead0e55dd</code></p>
 
 <p>If it succeeds, you&#39;ll receive a decoded <a href="#tx">TX</a> object and an HTTP Status Code 201. You can then use the <strong>hash</strong> to track its progress on the network.</p>
+<h2 id='transaction-cancellation-and-replacement'>Transaction Cancellation and Replacement</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-sd</span> <span class="s1">'curl -sd '</span><span class="o">{</span><span class="s2">"gas_price"</span>: 150000000000, <span class="s2">"inputs"</span>:[ <span class="s2">"sequence"</span>: 1 ,<span class="o">{</span><span class="s2">"addresses"</span>: <span class="o">[</span><span class="s2">"add42af7dd58b27e1e6ca5c4fdc01214b52d382f"</span><span class="o">]}]</span>,<span class="s2">"outputs"</span>:[<span class="o">{</span><span class="s2">"addresses"</span>: <span class="o">[</span><span class="s2">"884bae20ee442a1d53a1d44b1067af42f896e541"</span><span class="o">]</span>, <span class="s2">"value"</span>: 4200000000000000<span class="o">}]}</span><span class="s1">' https://api.blockcypher.com/v1/eth/main/txs/new?token=YOURTOKEN
+
+{
+  "tx": {
+    "block_height": -1,
+    "block_index": 0,
+    "hash": "9403244c6bcfe4063e7fb33138b02881d7a72ccdbd9c04d9abdff2b432d67ada",
+    "addresses": [
+      "add42af7dd58b27e1e6ca5c4fdc01214b52d382f",
+      "884bae20ee442a1d53a1d44b1067af42f896e541"
+    ],
+    "total": 7350000000000000,
+    "fees": 3150000000000000,
+    "size": 37,
+    "gas_limit": 21000,
+    "gas_price": 150000000000,
+    "relayed_by": "",
+    "received": "2016-06-08T01:32:35.573921633Z",
+    "ver": 0,
+    "double_spend": false,
+    "vin_sz": 1,
+    "vout_sz": 1,
+    "inputs": [
+      {
+        "sequence": 1,
+        "addresses": [
+          "add42af7dd58b27e1e6ca5c4fdc01214b52d382f"
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "value": 4200000000000000,
+        "addresses": [
+          "884bae20ee442a1d53a1d44b1067af42f896e541"
+        ]
+      }
+    ]
+  },
+  "tosign": [
+    "a83f5bea598e0d217a03a2646d6c49edb2e99daf4537b2c09b008df76b77acec"
+  ]
+}
+</span></code></pre></div>
+<p>It is possible to &quot;cancel&quot; or &quot;replace&quot; a stuck transaction with Ethereum. This is particularly useful in times when gas prices are fluctuating a lot: you may want to increase the gas price of your transaction, to make sure it will be confirmed quickly.</p>
+
+<p><strong>To &quot;cancel&quot; or &quot;replace&quot; a transaction, create a transaction with the same nonce as the one stuck in the mempool.</strong></p>
+
+<ul>
+<li>Cancel: Send a transaction with a value of 0 ETH to your own Ethereum address, with the same nonce as the one stuck in the mempool. This will prevent your previous transaction from being confirmed.</li>
+<li>Replace: Send the same transaction to another Ethereum address, with a higher gas price. This will prevent your previous transaction from being confirmed.</li>
+</ul>
+
+<p><strong>Be sure to use the same nonce. To do so, you have to add the <code>sequences</code> params with the <code>txs/new</code> endpoint.</strong></p>
+
+<aside class="warning">
+It is still possible for the initial transaction to be confirmed. In that case you replacement or cancellation transaction will be invalidated.
+</aside>
 <h1 id='contract-api'>Contract API</h1>
 <p>Compared to other blockchains, contracts lie at the heart of Ethereum&#39;s unique value proposition. Contracts can be expressively programmed in languages like <a href="https://solidity.readthedocs.io/en/latest/">Solidity</a>; if you&#39;re not familiar with Ethereum&#39;s contract language you should definitely start there.</p>
 

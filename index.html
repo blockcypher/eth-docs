@@ -3114,7 +3114,7 @@ Note that <b>mining fees</b> are deducted from any user-set <b>processing fees</
 </aside>
 
 <aside class="warning">
-By default, all payments will be debited with a minimum mining fee. The amount of the fee is configurable. But for very small payments, if the amount sent is even lower than the mining, the forward will fail. By default the mining fee is computed by multiplying the current `high_fee` with the `gas_limit` of 21000 for a standard transaction.
+By default, all payments will be debited with a minimum mining fee. The amount of the fee is configurable. But for very small payments, if the amount sent is even lower than the mining, the forward will fail. By default the mining fee is computed by multiplying the current <code>high_fee</code> with the <code>gas_limit</code> of 21000 for a standard transaction.
 
 </aside>
 <h2 id='create-payment-endpoint'>Create Payment Endpoint</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-d</span> <span class="s1">'{"destination":"0xda4b58eff2f3fd6c9845f82268cac1115b9b446b","callback_url": "https://my.domain.com/callbacks/new-pay"}'</span> https://api.blockcypher.com/v1/eth/main/payments?token<span class="o">=</span>YOURTOKEN

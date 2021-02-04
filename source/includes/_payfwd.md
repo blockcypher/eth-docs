@@ -13,7 +13,7 @@ Note that <b>mining fees</b> are deducted from any user-set <b>processing fees</
 </aside>
 
 <aside class="warning">
-By default, all payments will be debited with a minimum mining fee. The amount of the fee is configurable. But for very small payments, if the amount sent is even lower than the mining, the forward will fail. By default the mining fee is computed by multiplying the current `high_fee` with the `gas_limit` of 21000 for a standard transaction.
+By default, all payments will be debited with a minimum mining fee. The amount of the fee is configurable. But for very small payments, if the amount sent is even lower than the mining, the forward will fail. By default the mining fee is computed by multiplying the current <code>high_fee</code> with the <code>gas_limit</code> of 21000 for a standard transaction.
 
 </aside>
 

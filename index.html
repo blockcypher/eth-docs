@@ -469,6 +469,9 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#updates" class="toc-h1 toc-link" data-title="Updates">Updates</a>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://accounts.blockcypher.com/'>Sign Up/Login</a></li>
@@ -517,6 +520,7 @@ curl is a tool to transfer data from or to a server, using one of the supported 
 <li><a href="#events-and-hooks">Events and Hooks:</a> Reliable notifications system for a wide variety of events on blockchains, available through WebHooks or WebSockets.</li>
 <li><a href="#payment-forwarding">Payment Forwarding:</a> Create one-time addresses that will automatically forward to an address of your choosing.</li>
 <li><a href="#examples">Examples:</a> Various examples about Ethereum.</li>
+<li><a href="#updates">Updates:</a> List all the updates, bugfixes and new features in reverse chronological order.</li>
 </ul>
 <h3 id='changelog-and-errors'>Changelog and Errors</h3>
 <p>Our documentation is powered by <a href="https://pages.github.com/">GitHub Pages</a> and <a href="https://github.com/tripit/slate">Slate</a>, which makes viewing changes as simple as checking the <a href="https://github.com/blockcypher/eth-docs/commits/master">git commit history</a>. If there&#39;s an error or you&#39;d like to suggest a change, please consider submitting a pull request to benefit the broader BlockCypher community.</p>
@@ -2594,8 +2598,6 @@ curl <span class="nt">-sd</span> <span class="s1">'{"tx": {...}, "tosign": [ "a8
   ]
 }
 </span></code></pre></div>
-<p><em>This feature is not yet deployed</em></p>
-
 <p>It is possible to &quot;cancel&quot; or &quot;replace&quot; a stuck transaction with Ethereum. This is particularly useful in times when gas prices are fluctuating a lot: you may want to increase the gas price of your transaction, to make sure it will be confirmed quickly.</p>
 
 <p><strong>To &quot;cancel&quot; or &quot;replace&quot; a transaction, create a transaction with the same nonce as the one stuck in the mempool.</strong></p>
@@ -3290,6 +3292,29 @@ Notice that the <code>gas_limit</code> is set at 200,000.</p>
 Be careful with the quantity of Gas you provide.
 If your gas limit is too low your transaction will not go through (<a href=http://api.blockcypher.com/v1/eth/main/txs/53190ea38fd55c2b1e12a734b8ca0cf58ab9434123fd81decae05063ace49c0d>this transaction for example</a>).
 </aside>
+<h1 id='updates'>Updates</h1>
+<p>This section list all the updates in reverse chronological order. All dates are in the DD/MM/YY format.</p>
+
+<p><strong>04/02/21 - Creation of the &quot;Updates&quot; Section</strong></p>
+
+<p>We&#39;ve created this new &quot;Updates&quot; section to let you know about the new feature and bugfixes we deployed :).</p>
+
+<p><strong>04/02/21 - Ethereum Transaction Cancellation/Replacement and Bugfixes</strong></p>
+
+<p>You can now cancel and replace Ethereum with our Transaction API. See the [Creating Transactions part](#creating-transactions] for more information. 
+Alongside, when creating a new Ethereum transaction, the available balance is now the pool balance and not the confirmed balance.</p>
+
+<p><strong>27/11/20 - Support for OpenZeppelin ERC20 Token</strong></p>
+
+<p>Introduce limited support to contract with fallback. For now, we only allow calls on the USDC contract. Send us a message if you need another token to be included.</p>
+
+<p><strong>04/11/20 - Dynamic Fee for Payment Forwards</strong></p>
+
+<p>Payment Forwards now use our dynamic fees. This should ensure that your forwards are delivered as soon as possible.</p>
+
+<p><strong>15/10/20 - Ethereum Payment Forwards</strong></p>
+
+<p>Finally! Ethereum payment forward are now deployed. We are working hard to add this feature to ERC20 tokens as well.</p>
 
       </div>
       <div class="dark-box">

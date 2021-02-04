@@ -17,6 +17,7 @@ includes:
   - events
   - payfwd
   - examples
+  - updates
 
 search: true
 
@@ -71,6 +72,7 @@ In these docs you'll find everything you need to start working with Ethereum wit
 - [Events and Hooks:](#events-and-hooks) Reliable notifications system for a wide variety of events on blockchains, available through WebHooks or WebSockets.
 - [Payment Forwarding:](#payment-forwarding) Create one-time addresses that will automatically forward to an address of your choosing.
 - [Examples:](#examples) Various examples about Ethereum.
+- [Updates:](#updates) List all the updates, bugfixes and new features in reverse chronological order.
 
 ### Changelog and Errors
 

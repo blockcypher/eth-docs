@@ -469,5 +469,5 @@ It is possible to "cancel" or "replace" a stuck transaction with Ethereum. This 
 **Be sure to use the same nonce. To do so, you have to add the `sequences` params with the `txs/new` endpoint.**
 
 <aside class="warning">
-It is still possible for the initial transaction to be confirmed. In that case you replacement or cancellation transaction will be invalidated.
+It is still possible for the initial transaction to be confirmed. In that case, your replacement or cancellation transaction will be invalidated.
 </aside>

@@ -414,7 +414,7 @@ If it succeeds, you'll receive a decoded [TX](#tx) object and an HTTP Status Cod
 ## Transaction Cancellation and Replacement
 
 ```shell
-curl -sd 'curl -sd '{"gas_price": 150000000000, "inputs":[ "sequence": 1 ,{"addresses": ["add42af7dd58b27e1e6ca5c4fdc01214b52d382f"]}],"outputs":[{"addresses": ["884bae20ee442a1d53a1d44b1067af42f896e541"], "value": 4200000000000000}]}' https://api.blockcypher.com/v1/eth/main/txs/new?token=YOURTOKEN
+curl -sd '{"gas_price": 150000000000, "inputs":[ "sequence": 1 ,{"addresses": ["add42af7dd58b27e1e6ca5c4fdc01214b52d382f"]}],"outputs":[{"addresses": ["884bae20ee442a1d53a1d44b1067af42f896e541"], "value": 4200000000000000}]}' https://api.blockcypher.com/v1/eth/main/txs/new?token=YOURTOKEN
 
 {
   "tx": {

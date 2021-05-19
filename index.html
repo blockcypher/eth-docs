@@ -1344,13 +1344,15 @@ Objects sometimes contain <b>attributes</b> that are <b><i>optional.</i></b> The
 <span class="o">{</span>
   <span class="s2">"address"</span>: <span class="s2">"738d145faabb1e00cf5a017588a9c0f998318012"</span>,
   <span class="s2">"total_received"</span>: 9762206505909057760,
-  <span class="s2">"total_sent"</span>: 6916970312523512365,
-  <span class="s2">"balance"</span>: 2845236193385545395,
+  <span class="s2">"total_sent"</span>: 9742951942909057760,
+  <span class="s2">"balance"</span>: 19254563000000000,
   <span class="s2">"unconfirmed_balance"</span>: 0,
-  <span class="s2">"final_balance"</span>: 2845236193385545395,
-  <span class="s2">"n_tx"</span>: 702,
+  <span class="s2">"final_balance"</span>: 19254563000000000,
+  <span class="s2">"n_tx"</span>: 704,
   <span class="s2">"unconfirmed_n_tx"</span>: 0,
-  <span class="s2">"final_n_tx"</span>: 702,
+  <span class="s2">"final_n_tx"</span>: 704,
+  <span class="s2">"nonce"</span>: 414,
+  <span class="s2">"pool_nonce"</span>: 414,
   <span class="s2">"txrefs"</span>: <span class="o">[</span>
     <span class="o">{</span>
       <span class="s2">"tx_hash"</span>: <span class="s2">"ba44f568dc77d33893261c041994eeaef17d108a1845ccb9e376afea2acdd0e9"</span>,
@@ -1444,6 +1446,16 @@ Objects sometimes contain <b>attributes</b> that are <b><i>optional.</i></b> The
 <td><strong>final_n_tx</strong></td>
 <td><em>integer</em></td>
 <td>Final number of transactions, including confirmed and unconfirmed transactions, for this address.</td>
+</tr>
+<tr>
+<td><strong>nonce</strong></td>
+<td><em>integer</em></td>
+<td>Current nonce for this address.</td>
+</tr>
+<tr>
+<td><strong>pool_nonce</strong></td>
+<td><em>integer</em></td>
+<td>Pool nonce for this address.</td>
 </tr>
 <tr>
 <td><strong>tx_url</strong></td>

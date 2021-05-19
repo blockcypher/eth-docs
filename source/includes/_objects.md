@@ -288,13 +288,15 @@ curl -s https://api.blockcypher.com/v1/eth/main/addrs/738d145faabb1e00cf5a017588
 {
   "address": "738d145faabb1e00cf5a017588a9c0f998318012",
   "total_received": 9762206505909057760,
-  "total_sent": 6916970312523512365,
-  "balance": 2845236193385545395,
+  "total_sent": 9742951942909057760,
+  "balance": 19254563000000000,
   "unconfirmed_balance": 0,
-  "final_balance": 2845236193385545395,
-  "n_tx": 702,
+  "final_balance": 19254563000000000,
+  "n_tx": 704,
   "unconfirmed_n_tx": 0,
-  "final_n_tx": 702,
+  "final_n_tx": 704,
+  "nonce": 414,
+  "pool_nonce": 414,
   "txrefs": [
     {
       "tx_hash": "ba44f568dc77d33893261c041994eeaef17d108a1845ccb9e376afea2acdd0e9",
@@ -349,6 +351,8 @@ Attribute | Type | Description
 **n_tx** | *integer* | Number of confirmed transactions on this address. Only transactions that have made it into a block (confirmations > 0) are counted.
 **unconfirmed_n_tx** | *integer* | Number of unconfirmed transactions for this address. Only unconfirmed transactions (confirmations == 0) are counted.
 **final_n_tx** | *integer* | Final number of transactions, including confirmed and unconfirmed transactions, for this address.
+**nonce** | *integer* | Current nonce for this address.
+**pool_nonce** | *integer* | Pool nonce for this address.
 **tx_url** | *url* | ***Optional*** To retrieve base URL transactions. To get the full URL, concatenate this URL with a transaction's hash.
 **txrefs** | *array[[TXRef](#txref)]* | ***Optional*** Array of transaction summaries for this address. Usually only returned from the standard [Address Endpoint](#address-endpoint).
 **unconfirmed_txrefs** | *array[[TXRef](#txref)]* | ***Optional*** All unconfirmed transaction summaries for this address. Usually only returned from the standard [Address Endpoint](#address-endpoint).

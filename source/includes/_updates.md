@@ -2,6 +2,10 @@
 
 This section list all the updates in reverse chronological order. All dates are in the DD/MM/YY format.
 
+**06/08/21 - New Filters for Uncofirmed Transactions Endpoint**
+
+We've added new filters possibilities to the [Unconfirmed Transactions Endpoint](#unconfirmed-transactions-endpoint]
+
 **04/02/21 - Creation of the "Updates" Section**
 
 We've created this new "Updates" section to let you know about the new feature and bugfixes we deployed :).

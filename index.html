@@ -395,6 +395,9 @@
                     <a href="#address-endpoint" class="toc-h2 toc-link" data-title="Address Endpoint">Address Endpoint</a>
                   </li>
                   <li>
+                    <a href="#address-full-endpoint" class="toc-h2 toc-link" data-title="Address Full Endpoint">Address Full Endpoint</a>
+                  </li>
+                  <li>
                     <a href="#generate-address-endpoint" class="toc-h2 toc-link" data-title="Generate Address Endpoint">Generate Address Endpoint</a>
                   </li>
               </ul>
@@ -2094,6 +2097,146 @@ With recent blocks, $BLOCK_HEIGHT is not always a unique identifier, due to the 
 <p><code>738d145faabb1e00cf5a017588a9c0f998318012</code></p>
 
 <p>The returned object contains information about the address, including its balance in wei, the number of transactions associated with it, and transaction summaries in descending order by block height.</p>
+<h2 id='address-full-endpoint'>Address Full Endpoint</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-s</span> https://api.blockcypher.com/v1/eth/main/addrs/0x7CEcBd7a618146Cb251735b524e98f62d548177b/full
+<span class="o">{</span>
+  <span class="s2">"address"</span>: <span class="s2">"0x7CEcBd7a618146Cb251735b524e98f62d548177b"</span>,
+  <span class="s2">"total_received"</span>: 613136037139846027,
+  <span class="s2">"total_sent"</span>: 609820639361600898,
+  <span class="s2">"balance"</span>: 3315397778245129,
+  <span class="s2">"unconfirmed_balance"</span>: 0,
+  <span class="s2">"final_balance"</span>: 3315397778245129,
+  <span class="s2">"n_tx"</span>: 58,
+  <span class="s2">"unconfirmed_n_tx"</span>: 0,
+  <span class="s2">"final_n_tx"</span>: 58,
+  <span class="s2">"nonce"</span>: 36,
+  <span class="s2">"pool_nonce"</span>: 36,
+  <span class="s2">"hasMore"</span>: <span class="nb">true</span>,
+  <span class="s2">"txs"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"block_hash"</span>: <span class="s2">"eec1dd4d7271a53ada4cf3145577d0610e8648aefa42a9420a7ab1d3ae9a787b"</span>,
+      <span class="s2">"block_height"</span>: 13113955,
+      <span class="s2">"block_index"</span>: 550,
+      <span class="s2">"hash"</span>: <span class="s2">"5b199d5a3b3a3f9b2ffe37878bb3b428affbec117e7888202ba22503b3967a79"</span>,
+      <span class="s2">"addresses"</span>: <span class="o">[</span>
+        <span class="s2">"7cecbd7a618146cb251735b524e98f62d548177b"</span>,
+        <span class="s2">"f9209e6809e0a08ae18b1366c437cb3cad2b6182"</span>
+      <span class="o">]</span>,
+      <span class="s2">"total"</span>: 1550897349206251,
+      <span class="s2">"fees"</span>: 735000000000000,
+      <span class="s2">"size"</span>: 109,
+      <span class="s2">"gas_limit"</span>: 21000,
+      <span class="s2">"gas_used"</span>: 21000,
+      <span class="s2">"gas_price"</span>: 35000000000,
+      <span class="s2">"gas_tip_cap"</span>: 35000000000,
+      <span class="s2">"gas_fee_cap"</span>: 35000000000,
+      <span class="s2">"confirmed"</span>: <span class="s2">"2021-08-28T12:41:39Z"</span>,
+      <span class="s2">"received"</span>: <span class="s2">"2021-08-28T12:01:08.52Z"</span>,
+      <span class="s2">"ver"</span>: 0,
+      <span class="s2">"double_spend"</span>: <span class="nb">false</span>,
+      <span class="s2">"vin_sz"</span>: 1,
+      <span class="s2">"vout_sz"</span>: 1,
+      <span class="s2">"confirmations"</span>: 111695,
+      <span class="s2">"confidence"</span>: 1,
+      <span class="s2">"inputs"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+          <span class="s2">"sequence"</span>: 35,
+          <span class="s2">"addresses"</span>: <span class="o">[</span>
+            <span class="s2">"7cecbd7a618146cb251735b524e98f62d548177b"</span>
+          <span class="o">]</span>
+        <span class="o">}</span>
+      <span class="o">]</span>,
+      <span class="s2">"outputs"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+          <span class="s2">"value"</span>: 1550897349206251,
+          <span class="s2">"addresses"</span>: <span class="o">[</span>
+            <span class="s2">"f9209e6809e0a08ae18b1366c437cb3cad2b6182"</span>
+          <span class="o">]</span>
+        <span class="o">}</span>
+      <span class="o">]</span>
+    <span class="o">}</span>,
+  ...,
+<span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>The Address Full Endpoint returns all information available about a particular address, including an array of complete <a href="#tx">transactions</a> instead of just transaction inputs and outputs. Unfortunately, because of the amount of data returned, it is the slowest of the address endpoints, but it returns the most detailed data record.</p>
+
+<table><thead>
+<tr>
+<th>Resource</th>
+<th>Method</th>
+<th>Return Object</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/addrs/$ADDRESS/full</td>
+<td>GET</td>
+<td><a href="#address">Address</a></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Flag</th>
+<th>Type</th>
+<th>Effect</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>before</strong></td>
+<td><em>integer</em></td>
+<td>Filters response to only include transactions below <strong>before</strong> height in the blockchain.</td>
+</tr>
+<tr>
+<td><strong>after</strong></td>
+<td><em>integer</em></td>
+<td>Filters response to only include transactions above <strong>after</strong> height in the blockchain.</td>
+</tr>
+<tr>
+<td><strong>limit</strong></td>
+<td><em>integer</em></td>
+<td><strong>limit</strong> sets the minimum number of returned TXs; there can be less if there are less than <strong>limit</strong> TXs associated with this address, but there can also be more in the rare case of more TXs in the block at the bottom of your call. This ensures paging by block height never misses TXs. Defaults to 10, maximum is 50.</td>
+</tr>
+<tr>
+<td><strong>txlimit</strong></td>
+<td><em>integer</em></td>
+<td>This filters the TXInputs/TXOutputs within the returned TXs to include a maximum of <strong>txlimit</strong> items.</td>
+</tr>
+<tr>
+<td><strong>confirmations</strong></td>
+<td><em>integer</em></td>
+<td>If set, only returns the <strong>balance</strong> and TXs that have <em>at least</em> this number of <strong>confirmations</strong>.</td>
+</tr>
+<tr>
+<td><strong>confidence</strong></td>
+<td><em>integer</em></td>
+<td>Filters response to only include TXs above <strong>confidence</strong> in percent; e.g., if this is set to 99, will only return TXs with 99% confidence or above (including all confirmed TXs). For more detail on confidence, check the <a href="#confidence-factor">Confidence Factor</a> documentation.</td>
+</tr>
+<tr>
+<td><strong>includeHex</strong></td>
+<td><em>bool</em></td>
+<td>If <em>true</em>, includes hex-encoded raw transaction for each TX; <em>false</em> by default.</td>
+</tr>
+<tr>
+<td><strong>includeConfidence</strong></td>
+<td><em>bool</em></td>
+<td>If <em>true</em>, includes the <strong>confidence</strong> attribute (useful for unconfirmed transactions) within returned TXs. For more info about this figure, check the <a href="#confidence-factor">Confidence Factor</a> documentation.</td>
+</tr>
+<tr>
+<td><strong>omitWalletAddresses</strong></td>
+<td><em>bool</em></td>
+<td>If <strong>omitWalletAddresses</strong> is <em>true</em> and you&#39;re querying a <a href="#wallet">Wallet</a> or <a href="#hdwallet">HDWallet</a>, the response will omit address information (useful to speed up the API call for larger wallets).</td>
+</tr>
+</tbody></table>
+
+<p>ADDRESS is a <em>string</em> representing the public address (or wallet/HD wallet name) you&#39;re interested in querying, for example:</p>
+
+<p><code>0x7CEcBd7a618146Cb251735b524e98f62d548177b</code></p>
+
+<p>The returned object contains information about the address, including its balance in satoshis, the number of transactions associated with it, and the corresponding full transaction records in descending order by block height---and if multiple transactions associated with this address exist within the same block, by descending block index (position in block).</p>
+
+<aside class="notice">
+If your returned <a href="#address">Address</a> object includes the <b>hasMore</b> attribute, there are more transactions associated with the address than transfered through this endpoint. If this happens, note the block height of the last transaction in the array, and then you can use the <b>before</b> flag to page through results.
+</aside>
 <h2 id='generate-address-endpoint'>Generate Address Endpoint</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-sX</span> POST https://api.blockcypher.com/v1/eth/main/addrs?token<span class="o">=</span>YOURTOKEN
 <span class="o">{</span>
   <span class="s2">"private"</span>: <span class="s2">"44c984a089184a9a659e10210af360049f366a34f7f3cb253ac5cbfcb33f3d7c"</span>,
@@ -3339,9 +3482,13 @@ If your gas limit is too low your transaction will not go through (<a href=http:
 <h1 id='updates'>Updates</h1>
 <p>This section list all the updates in reverse chronological order. All dates are in the DD/MM/YY format.</p>
 
+<p><strong>14/09/21 - Documentation for Address Full Endpoint</strong></p>
+
+<p>We&#39;ve added some documentation for the <a href="#address-full-endpoint">Address Full Endpoint</a> and fixed some hyperlinks.</p>
+
 <p><strong>06/08/21 - New Filters for Uncofirmed Transactions Endpoint</strong></p>
 
-<p>We&#39;ve added new filters possibilities to the [Unconfirmed Transactions Endpoint](#unconfirmed-transactions-endpoint]</p>
+<p>We&#39;ve added new filters possibilities to the <a href="#unconfirmed-transactions-endpoint">Unconfirmed Transactions Endpoint</a>.</p>
 
 <p><strong>04/02/21 - Creation of the &quot;Updates&quot; Section</strong></p>
 
@@ -3349,7 +3496,7 @@ If your gas limit is too low your transaction will not go through (<a href=http:
 
 <p><strong>04/02/21 - Ethereum Transaction Cancellation/Replacement and Bugfixes</strong></p>
 
-<p>You can now cancel and replace Ethereum with our Transaction API. See the [Creating Transactions part](#creating-transactions] for more information. 
+<p>You can now cancel and replace Ethereum with our Transaction API. See the <a href="#creating-transactions">Creating Transactions part</a> for more information. 
 Alongside, when creating a new Ethereum transaction, the available balance is now the pool balance and not the confirmed balance.</p>
 
 <p><strong>27/11/20 - Support for OpenZeppelin ERC20 Token</strong></p>

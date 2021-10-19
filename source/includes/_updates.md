@@ -2,6 +2,18 @@
 
 This section list all the updates in reverse chronological order. All dates are in the DD/MM/YY format.
 
+**18/10/21 - Fix Unconfirmed Transactions on Address Full Endpoint**
+
+Previously, when using the address full endpoint with `confirmations>0`, you'd still get unconfirmed transactions. This is fixed.
+
+**14/10/21 - Fix Websocket Origin Check**
+
+We fixed an error where using blockcypher websocket would returns a 403.
+
+**12/10/21 - Allow Multiple Transaction Replacement**
+
+Previously, a hard limit of 2 two transactions with the same nonce was in place. We have removed this limitation.
+
 **14/09/21 - Documentation for Address Full Endpoint**
 
 We've added some documentation for the [Address Full Endpoint](#address-full-endpoint) and fixed some hyperlinks.

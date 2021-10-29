@@ -848,6 +848,26 @@ Objects sometimes contain <b>attributes</b> that are <b><i>optional.</i></b> The
 <td>A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks.</td>
 </tr>
 <tr>
+<td><strong>high_priority_fee</strong></td>
+<td><em>integer</em></td>
+<td>A rolling average of the priority fee (in wei) for transactions to be confirmed within 1 to 2 blocks.</td>
+</tr>
+<tr>
+<td><strong>medium_priority_fee</strong></td>
+<td><em>integer</em></td>
+<td>A rolling average of the priority fee (in wei) for transactions to be confirmed within 3 to 6 blocks.</td>
+</tr>
+<tr>
+<td><strong>low_priority_fee</strong></td>
+<td><em>integer</em></td>
+<td>A rolling average of the priority fee (in wei) for transactions to be confirmed in 7 or more blocks.</td>
+</tr>
+<tr>
+<td><strong>base_fee</strong></td>
+<td><em>integer</em></td>
+<td>Represents the minimum amount of gas that must be used for a transaction to be included in a block.</td>
+</tr>
+<tr>
 <td><strong>last_fork_height</strong></td>
 <td><em>integer</em></td>
 <td><strong><em>Optional</em></strong> The current height of the latest fork to the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.</td>
@@ -3481,6 +3501,10 @@ If your gas limit is too low your transaction will not go through (<a href=http:
 </aside>
 <h1 id='updates'>Updates</h1>
 <p>This section list all the updates in reverse chronological order. All dates are in the DD/MM/YY format.</p>
+
+<p><strong>29/10/21 - Add Priority Fee Estimation</strong></p>
+
+<p>We are now estimating the priority fee. Soon, transactions created with the API will be only EIPl-1559 transactions.</p>
 
 <p><strong>18/10/21 - Fix Unconfirmed Transactions on Address Full Endpoint</strong></p>
 

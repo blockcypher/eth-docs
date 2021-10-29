@@ -53,6 +53,10 @@ Attribute | Type | Description
 **high_gas_price** | *integer* | A rolling average of the gas price (in wei) for transactions to be confirmed within 1 to 2 blocks.
 **medium_gas_price** | *integer* | A rolling average of the gas price (in wei) for transactions to be confirmed within 3 to 6 blocks.
 **low_gas_price** | *integer* | A rolling average of the gas price (in wei) for transactions to be confirmed in 7 or more blocks.
+**high_priority_fee** | *integer* | A rolling average of the priority fee (in wei) for transactions to be confirmed within 1 to 2 blocks.
+**medium_priority_fee** | *integer* | A rolling average of the priority fee (in wei) for transactions to be confirmed within 3 to 6 blocks.
+**low_priority_fee** | *integer* | A rolling average of the priority fee (in wei) for transactions to be confirmed in 7 or more blocks.
+**base_fee** | *integer* | Represents the minimum amount of gas that must be used for a transaction to be included in a block. 
 **last_fork_height** | *integer* | ***Optional*** The current height of the latest fork to the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.
 **last_fork_hash** | *string* | ***Optional*** The hash of the latest confirmed block in the latest fork of the blockchain; when no competing blockchain fork present, not returned with endpoints that return Blockchains.
 

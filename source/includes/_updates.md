@@ -2,6 +2,10 @@
 
 This section list all the updates in reverse chronological order. All dates are in the DD/MM/YY format.
 
+**29/10/21 - Add Priority Fee Estimation**
+
+We are now estimating the priority fee. Soon, transactions created with the API will be only EIPl-1559 transactions.
+
 **18/10/21 - Fix Unconfirmed Transactions on Address Full Endpoint**
 
 Previously, when using the address full endpoint with `confirmations>0`, you'd still get unconfirmed transactions. This is fixed.

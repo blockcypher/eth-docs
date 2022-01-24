@@ -95,3 +95,37 @@ curl -d '{ "private": $PRIVATE, "gas_limit": 200000, "params": [ "285e456950190f
 Be careful with the quantity of Gas you provide.
 If your gas limit is too low your transaction will not go through (<a href=http://api.blockcypher.com/v1/eth/main/txs/53190ea38fd55c2b1e12a734b8ca0cf58ab9434123fd81decae05063ace49c0d>this transaction for example</a>).
 </aside>
+
+
+### Deploying an ERC-20 Token
+
+You can deploy an ERC-20 on our BETH Testnet and interact with it. 
+Here is an example that will create a token called ERC20Basic with the symbol BSC. 
+In this example, the creator of the contract will be awarded 1000 tokens. You can send call the contract using the address provided in the response.
+
+```shell
+curl -d '{
+  "solidity": "// SPDX-License-Identifier: MIT \n pragma solidity ^0.8.3; \n contract ERC20Basic { \n string public constant name = \"ERC20Basic\"; \n string public constant symbol = \"BSC\"; \n uint8 public constant decimals = 18; \n event Approval(address indexed tokenOwner, address indexed spender, uint tokens); \n event Transfer(address indexed from, address indexed to, uint tokens); \n mapping(address => uint256) balances; \n mapping(address => mapping (address => uint256)) allowed; \n uint256 totalSupply_; \n using SafeMath for uint256; \n constructor(uint256 total) public { \n totalSupply_ = total; \n balances[msg.sender] = totalSupply_;} \n function totalSupply() public view returns (uint256) { \n return totalSupply_;} \n function balanceOf(address tokenOwner) public view returns (uint) { \n return balances[tokenOwner];} \n function transfer(address receiver, uint numTokens) public returns (bool) { \n require(numTokens <= balances[msg.sender]); \n balances[msg.sender] = balances[msg.sender].sub(numTokens); \n balances[receiver] = balances[receiver].add(numTokens); \n emit Transfer(msg.sender, receiver, numTokens); \n return true;} \n function approve(address delegate, uint numTokens) public returns (bool) { \n allowed[msg.sender][delegate] = numTokens; \n Approval(msg.sender, delegate, numTokens); \n return true;} \n function allowance(address owner, address delegate) public view returns (uint) { \n return allowed[owner][delegate];} \n function transferFrom(address owner, address buyer, uint numTokens) public returns (bool) { \n require(numTokens <= balances[owner]); \n require(numTokens <= allowed[owner][msg.sender]); \n balances[owner] = balances[owner].sub(numTokens); \n allowed[owner][msg.sender] = allowed[owner][msg.sender].sub(numTokens); \n balances[buyer] = balances[buyer].add(numTokens); \n Transfer(owner, buyer, numTokens); \n return true;}} \n library SafeMath {  \n function sub(uint256 a, uint256 b) internal pure returns (uint256) { \n assert(b <= a); \n return a - b;} \n function add(uint256 a, uint256 b) internal pure returns (uint256) { \n uint256 c = a + b; \n assert(c >= a); \n return c;}}",
+  "params": [1000],
+  "publish": ["ERC20Basic"],
+  "private": "$PRIVATE",
+  "gas_limit": 500000
+}' https://api.blockcypher.com/v1/beth/test/contracts?token=$TOKEN
+[
+    {
+        "name": "ERC20Basic",
+         ...
+        "gas_limit": 500000,
+        "creation_tx_hash": "a578b6cf1d253b1e22a5690deb46dca3097c297355fb7f90ce4e271c14272ae3",
+        "address": "6699c5d99527a520fc82cd35cc5c6ccf07893382",
+        "params": [
+            1000
+        ]
+    },
+]
+```
+
+
+<aside class="warning">
+Do not use this contract in production.
+</aside>

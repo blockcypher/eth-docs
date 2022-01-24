@@ -8,7 +8,7 @@ We have added an example showing you how to deploy an ERC-20 on our Ethereum tes
 
 **29/10/21 - Add Priority Fee Estimation**
 
-We are now estimating the priority fee. Soon, transactions created with the API will be only EIPl-1559 transactions.
+We are now estimating the priority fee. Soon, transactions created with the API will be only EIP-1559 transactions.
 
 **18/10/21 - Fix Unconfirmed Transactions on Address Full Endpoint**
 

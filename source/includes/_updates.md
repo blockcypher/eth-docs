@@ -2,6 +2,10 @@
 
 This section list all the updates in reverse chronological order. All dates are in the DD/MM/YY format.
 
+**24/01/22 - Add ERC-20 Deployement on BETH Example**
+
+We have added an example showing you how to deploy an ERC-20 on our Ethereum testnet: BETH.
+
 **29/10/21 - Add Priority Fee Estimation**
 
 We are now estimating the priority fee. Soon, transactions created with the API will be only EIPl-1559 transactions.

@@ -408,7 +408,7 @@ Resource | Method | Request Object | Return Object
 -------- | ------ | -------------- | -------------
 /txs/push | POST | {"tx":$TXHEX} | [TX](#tx)
 
-$TXHEX is a hex-encoded raw representation of your transaction, for example:
+$TXHEX is a hex-encoded raw, **RLP encoded**, representation of your transaction, for example:
 
 `f86b808504e3b2920082520894add42af7dd58b27e1e6ca5c4fdc01214b52d382f870bdccd84e7b000801ba0b86360f1c2d2b38421a80e71bf4cf54371bc9aa62f81c925484c6557b44b13f1a07b5690150c10a3947225fb612162c90ccfaefde99f7d363a8013e3eead0e55dd`
 

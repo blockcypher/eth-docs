@@ -154,10 +154,9 @@ We want everyone to try BlockCypher with as little friction as possible, which i
 
 We do rate-limit our free tier, with or without a token (though tokens are required for Confidence lookups, WebHooks/Sockets, Payments, and any **POST** or **DELETE** calls):
 
-- Classic requests, up to 3 requests/sec and 200 requests/hr
-- WebHooks and WebSockets, up to 200 requests/hr
-- WebHooks and Payments, up to 200 stored on our servers
-- Confidence lookups, up to 15 requests/hour
+- Classic requests, up to 3 requests/sec and 100 requests/hr
+- WebHooks and WebSockets, up to 100 requests/hr
+- WebHooks and Payments, up to 100 stored on our servers
 
 <aside class="warning">
 If you exceed these limits, your requests will return an HTTP Status Code 429!
